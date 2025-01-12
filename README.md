@@ -15,3 +15,7 @@ stream processing perhaps with dyanmic grouping or partionioning dataset for mor
 ------------------------------------------------------------------------------------------------------------------------------------
 potential v0.1 
 read file in chunk> get data in chunk > get array of data > break down and insert into hashmap (suffix: [array of ids following it]) > look at inputed value > sort array with the prefix > write into file
+
+using one main hash map and sorting it at the end versus temporary hashmap that creates new on every prefix
+
+merge sort is a potential option for when files get too big
