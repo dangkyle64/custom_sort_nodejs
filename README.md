@@ -33,5 +33,5 @@ This is a potential solution for the problem but plans on working with a persist
 
 Clone the repository:
    ```bash
-   git clone https://github.com/dangkyle64/binary_insert_nodejs
+   git clone https://github.com/dangkyle64/temporary_hashmap_nodejs
    ```
