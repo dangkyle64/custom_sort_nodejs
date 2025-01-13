@@ -1,21 +1,37 @@
-read file > get data > get array of data > break down into separate arrays based on prefix > sort within prefixes > put back together > write into file
+# Temporary Hashmap Usage Examples
 
-weaknesses
-    memory usage -> potentially bring in the readstream to read it by sections 
-    inefficient grouping with prefixes (look into hashmaps)
-    too much sorting inside each of the separate arrays -> only plan on sorting within the array with the added prefix if possible 
-    too much sorting outside when putting arrays together -> if in readstream, it should already be ordered and written in that order 
-        multi step sorting here where data sorted globally and then within each prefix?
-    inefficient merging strategies -> look at other merge strategies
-    not scalable -> look into external sorting or adaptive sorting techniques
+The usage of temporary hashmaps may offer a possible solution to the problem of sorting the files and its values but there was a couple considerations found when working with it.
 
-has map allows O(1) insertions making easier to handle large and dynamic datasets
-stream processing perhaps with dyanmic grouping or partionioning dataset for more efficient handling 
+The array must be sorted originally with usage of a temporary hashmap with the current setup of creating a new hashmap with every new prefix. This problem could be sorted with the built in function sort() on the array of values after inputting the new value in.
 
-------------------------------------------------------------------------------------------------------------------------------------
-potential v0.1 
-read file in chunk> get data in chunk > get array of data > break down and insert into hashmap (suffix: [array of ids following it]) > look at inputed value > sort array with the prefix > write into file
+An example would be something like below:
 
-using one main hash map and sorting it at the end versus temporary hashmap that creates new on every prefix
+array = [
+    100403,
+    10040404,
+    100503,
+    10050456,
+]
 
-merge sort is a potential option for when files get too big
+array.push(100405)
+array.sort()
+
+array = [
+    100403
+    10040404
+    100405
+    100503
+    10050456
+]
+
+This is a potential solution for the problem but plans on working with a persistent hashmap would be a good idea. Tests toward being correct in the sorting process is the primary concern, with speed and cleanliness being secondary as of the testing stage.
+
+## Table of Contents
+- [Installation](#installation)
+
+## Installation
+
+Clone the repository:
+   ```bash
+   git clone https://github.com/dangkyle64/binary_insert_nodejs
+   ```
